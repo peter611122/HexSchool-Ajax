@@ -14,6 +14,17 @@ var xhr = new XMLHttpRequest();
 xhr.open('get','https://hexschool.github.io/ajaxHomework/data.json',true);
 //格式: get (讀取資料)、post (傳送資料到伺服器)
 
-
+//第三個參數'true'，true 非同步，不會等資料傳回來，就讓程式繼續往下跑，等到回傳才會自動回傳
+//第三個參數'false'，它會等資料傳回來，才會讓程式碼繼續往下跑
     //空的資料
 xhr.send(null);
+
+//console.log(xhr.responseText);
+
+
+xhr.onload = function(){
+    console.log(xhr.responseText);
+    var str = JSON.parse(xhr.responseText);
+    document.querySelector('.message').textContent = str[0].name;
+
+};
